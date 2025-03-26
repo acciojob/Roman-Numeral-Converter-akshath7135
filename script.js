@@ -1,34 +1,39 @@
 function convertToRoman(num) {
-  	const arr = {
-      ['M',1000], 
-	['CM',900],
-      ['D', 500], 
-		['CD',400],
-      ['C', 100], 
-		['XC',90],
-      ['L', 50], 
-		['XL',40],
-      ['X', 10], 
-		['IX',9],
-      ['V', 5], 
-		['IV',4],
-      ['I', 1]
+    const obj = {
+        0: ['M', 1000], 
+        1: ['CM', 900], 
+        2: ['D', 500], 
+        3: ['CD', 400], 
+        4: ['C', 100], 
+        5: ['XC', 90], 
+        6: ['L', 50], 
+        7: ['XL', 40], 
+        8: ['X', 10], 
+        9: ['IX', 9], 
+        10: ['V', 5], 
+        11: ['IV', 4], 
+        12: ['I', 1]
     };
 
-let roman="";
-	for (let i= 0; i<arr.length; i++) {
-		let symbol = arr[i][0];
-		let value = arr[i][1];
+    let result = "";
 
-		while (num>=value) {
-			num=num-value;
-			roman=roman+value;
-		}
-	}
-	return roman;
+    for (let key in obj) {
+        let symbol = obj[key][0];
+        let value = obj[key][1];
+
+        while (num >= value) {
+            result += symbol;
+            num -= value;
+        }
+    }
+    
+    return result;
 }
 
+// You can test your code by running the function below
+console.log(convertToRoman(14)); // Output: XIV
+console.log(convertToRoman(798)); // Output: DCCXCVIII
+console.log(convertToRoman(36)); // Output: XXXVI
 
-
-// do not edit below this line
-module.exports = convertToRoman
+// Do not edit below this line
+module.exports = convertToRoman;
